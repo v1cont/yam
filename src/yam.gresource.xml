@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/yam/img">
+    <file>icons/addressbook.png</file>
+    <file>icons/address.png</file>
+    <file>icons/attach.png</file>
+    <file>icons/book.png</file>
+    <file>icons/category.png</file>
+    <file>icons/clip.png</file>
+    <file>icons/complete.png</file>
+    <file>icons/continue.png</file>
+    <file>icons/deleted.png</file>
+    <file>icons/delete.png</file>
+    <file>icons/draft.png</file>
+    <file>icons/error.png</file>
+    <file>icons/folder-close.png</file>
+    <file>icons/folder-noselect.png</file>
+    <file>icons/folder-open.png</file>
+    <file>icons/folder-search.png</file>
+    <file>icons/forwarded.png</file>
+    <file>icons/group.png</file>
+    <file>icons/hand-signed.png</file>
+    <file>icons/html.png</file>
+    <file>icons/inbox.png</file>
+    <file>icons/insert-file.png</file>
+    <file>icons/interface.png</file>
+    <file>icons/junk.png</file>
+    <file>icons/ldap.png</file>
+    <file>icons/linewrap.png</file>
+    <file>icons/mail-compose.png</file>
+    <file>icons/mail-forward.png</file>
+    <file>icons/mail.png</file>
+    <file>icons/mail-receive-all.png</file>
+    <file>icons/mail-receive.png</file>
+    <file>icons/mail-reply.png</file>
+    <file>icons/mail-reply-to-all.png</file>
+    <file>icons/mail-send.png</file>
+    <file>icons/mail-send-queue.png</file>
+    <file>icons/mail-small.png</file>
+    <file>icons/mark.png</file>
+    <file>icons/new.png</file>
+    <file>icons/notspam.png</file>
+    <file>icons/offline.png</file>
+    <file>icons/online.png</file>
+    <file>icons/outbox.png</file>
+    <file>icons/person.png</file>
+    <file>icons/replied.png</file>
+    <file>icons/spam.png</file>
+    <file>icons/trash.png</file>
+    <file>icons/tray-newmail.png</file>
+    <file>icons/tray-nomail.png</file>
+    <file>icons/unread.png</file>
+    <file>icons/vcard.png</file>
+  </gresource>
+</gresources>

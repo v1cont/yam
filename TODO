@@ -1,0 +1,20 @@
+- Remove dropped/deprecated API
+  * GtkOptionMenu - done
+  * GtkCTree - done
+  * GtkCList - done
+  * Direct access to widget properties - done
+  * GtkIconFactory - partially done by merging appropriate class into source tree
+  * GtkTable - done
+  * GtkStock - done
+  * GdkThreads
+- Use GtkApplication for single instance
+- Use GNotification instead of notification window
+- Use GtkAssistant for setup dialog
+- Use GtkDialog for all dialogs (?)
+- Cleanup extra gtk_main() calls (?)
+- Rewrite code for icon handling - done
+- Use GSpell for spell checking - done
+- Make configs and data location XDG-compliant - partially
+- Add libsecret for keeping passwords
+- Add htmlview plugin (on WebKitGtk) with supporting "cid:" links
+- Make system tray optional - done

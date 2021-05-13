@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Yam
+_GenericName=E-mail client
+_Comment=Light and fast e-mail client
+Categories=GTK;Network;Internet;Email;News;
+Exec=yam %U
+Icon=yam
+Terminal=false
+Type=Application
+StartupNotify=false
+MimeType=message/rfc822;x-scheme-handler/mailto;
