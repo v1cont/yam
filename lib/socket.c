@@ -365,11 +365,11 @@ sock_set_nonblocking_mode (SockInfo * sock, gboolean nonblock)
     {
       if (nonblock)
         {
-          SOCK_SET_FLAGS (sock->flags, SYL_SOCK_NONBLOCK);
+          SOCK_SET_FLAGS (sock->flags, YAM_SOCK_NONBLOCK);
         }
       else
         {
-          SOCK_UNSET_FLAGS (sock->flags, SYL_SOCK_NONBLOCK);
+          SOCK_UNSET_FLAGS (sock->flags, YAM_SOCK_NONBLOCK);
         }
     }
 
@@ -821,7 +821,7 @@ sock_info_connect (SockInfo * sockinfo)
 
   sockinfo->sock = sock;
   sockinfo->sock_ch = g_io_channel_unix_new (sock);
-  sockinfo->flags = SYL_SOCK_CHECK_IO;
+  sockinfo->flags = YAM_SOCK_CHECK_IO;
 
   g_io_channel_set_encoding (sockinfo->sock_ch, NULL, NULL);
 
@@ -892,7 +892,7 @@ sock_connect_async_cb (GIOChannel * source, GIOCondition condition, gpointer dat
   sockinfo->sock = fd;
   sockinfo->sock_ch = g_io_channel_unix_new (fd);
   sockinfo->state = CONN_ESTABLISHED;
-  sockinfo->flags = SYL_SOCK_NONBLOCK;
+  sockinfo->flags = YAM_SOCK_NONBLOCK;
 
   g_io_channel_set_encoding (sockinfo->sock_ch, NULL, NULL);
 

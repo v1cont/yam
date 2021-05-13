@@ -45,14 +45,14 @@ typedef enum {
 } ConnectionState;
 
 typedef enum {
-  SYL_SOCK_NONBLOCK = 1 << 0,
-  SYL_SOCK_CHECK_IO = 1 << 1
+  YAM_SOCK_NONBLOCK = 1 << 0,
+  YAM_SOCK_CHECK_IO = 1 << 1
 } SockFlags;
 
 #define SOCK_SET_FLAGS(flags, set)	{ (flags) |= (set); }
 #define SOCK_UNSET_FLAGS(flags, set)	{ (flags) &= ~(set); }
-#define SOCK_IS_NONBLOCK(flags)		((flags & SYL_SOCK_NONBLOCK) != 0)
-#define SOCK_IS_CHECK_IO(flags)		((flags & SYL_SOCK_CHECK_IO) != 0)
+#define SOCK_IS_NONBLOCK(flags)		((flags & YAM_SOCK_NONBLOCK) != 0)
+#define SOCK_IS_CHECK_IO(flags)		((flags & YAM_SOCK_CHECK_IO) != 0)
 
 typedef gint (*SockConnectFunc) (SockInfo * sock, gpointer data);
 typedef gboolean (*SockFunc) (SockInfo * sock, GIOCondition condition, gpointer data);
