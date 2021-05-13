@@ -823,6 +823,8 @@ sock_info_connect (SockInfo * sockinfo)
   sockinfo->sock_ch = g_io_channel_unix_new (sock);
   sockinfo->flags = SYL_SOCK_CHECK_IO;
 
+  g_io_channel_set_encoding (sockinfo->sock_ch, NULL, NULL);
+
   sock_list = g_list_prepend (sock_list, sockinfo);
 
   g_usleep (100000);
@@ -891,6 +893,8 @@ sock_connect_async_cb (GIOChannel * source, GIOCondition condition, gpointer dat
   sockinfo->sock_ch = g_io_channel_unix_new (fd);
   sockinfo->state = CONN_ESTABLISHED;
   sockinfo->flags = SYL_SOCK_NONBLOCK;
+
+  g_io_channel_set_encoding (sockinfo->sock_ch, NULL, NULL);
 
   sock_list = g_list_prepend (sock_list, sockinfo);
 
@@ -1016,7 +1020,7 @@ sock_connect_address_list_async (SockConnectData * conn_data)
 
   if (conn_data->addr_list == NULL)
     {
-      g_warning ("sock_connect_address_list_async: " "DNS lookup for %s failed", conn_data->hostname);
+      g_warning ("sock_connect_address_list_async: DNS lookup for %s failed", conn_data->hostname);
       conn_data->sock->state = CONN_LOOKUPFAILED;
       conn_data->func (conn_data->sock, conn_data->data);
       sock_connect_async_cancel (conn_data->id);
@@ -1063,6 +1067,7 @@ sock_connect_address_list_async (SockConnectData * conn_data)
   conn_data->cur_addr = conn_data->cur_addr->next;
 
   conn_data->channel = g_io_channel_unix_new (sock);
+  g_io_channel_set_encoding (conn_data->channel, NULL, NULL);
   conn_data->io_tag = g_io_add_watch
     (conn_data->channel, G_IO_OUT | G_IO_ERR | G_IO_HUP | G_IO_NVAL, sock_connect_async_cb, conn_data);
 
@@ -1105,7 +1110,7 @@ sock_get_address_info_async_cb (GIOChannel * source, GIOCondition condition, gpo
 
   for (;;)
     {
-      if (g_io_channel_read_chars (source, (gchar *) ai_member, sizeof (ai_member), &bytes_read, NULL) != G_IO_ERROR_NONE)
+      if (g_io_channel_read_chars (source, (gchar *) ai_member, sizeof (ai_member), &bytes_read, NULL) != G_IO_STATUS_NORMAL)
         {
           g_warning ("sock_get_address_info_async_cb: address length read error\n");
           break;
@@ -1121,7 +1126,7 @@ sock_get_address_info_async_cb (GIOChannel * source, GIOCondition condition, gpo
         }
 
       addr = g_malloc (ai_member[3]);
-      if (g_io_channel_read_chars (source, (gchar *) addr, ai_member[3], &bytes_read, NULL) != G_IO_ERROR_NONE)
+      if (g_io_channel_read_chars (source, (gchar *) addr, ai_member[3], &bytes_read, NULL) != G_IO_STATUS_NORMAL)
         {
           g_warning ("sock_get_address_info_async_cb: address data read error\n");
           g_free (addr);
@@ -1269,6 +1274,7 @@ sock_get_address_info_async (const gchar * hostname, gushort port, SockAddrFunc 
       lookup_data->data = data;
 
       lookup_data->channel = g_io_channel_unix_new (pipe_fds[0]);
+      g_io_channel_set_encoding (lookup_data->channel, NULL, NULL);
       lookup_data->io_tag = g_io_add_watch (lookup_data->channel, G_IO_IN, sock_get_address_info_async_cb, lookup_data);
     }
 
