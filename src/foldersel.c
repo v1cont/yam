@@ -79,7 +79,7 @@ static GtkWidget *new_button;
 
 static GtkTreeStore *tree_store;
 
-static FolderItem *folder_item;
+static FolderItem *folder_item = NULL;
 static FolderItem *selected_item;
 
 FolderSelectionType sel_type;
@@ -140,6 +140,9 @@ foldersel_folder_sel_full (Folder * cur_folder, FolderSelectionType type, const 
   else
     gtk_widget_hide (label);
 
+  gtk_entry_set_text (GTK_ENTRY (entry), "");
+
+  gtk_tree_store_clear (tree_store);
   foldersel_set_tree (cur_folder);
 
   /* select current */
@@ -182,9 +185,6 @@ foldersel_folder_sel_full (Folder * cur_folder, FolderSelectionType type, const 
     gtk_main_iteration ();
 
   gtk_widget_hide (window);
-  gtk_label_set_text (GTK_LABEL (label), "");
-  gtk_entry_set_text (GTK_ENTRY (entry), "");
-  gtk_tree_store_clear (tree_store);
 
   if (cancelled || !selected_item)
     return NULL;
