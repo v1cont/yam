@@ -80,7 +80,6 @@ void yam_tree_view_vertical_autoscroll (GtkTreeView * treeview);
 void yam_tree_view_fast_clear (GtkTreeView * treeview, GtkTreeStore * store);
 
 gchar *yam_editable_get_selection (GtkEditable * editable);
-void yam_editable_disable_im (GtkEditable * editable);
 
 void yam_entry_strip_text (GtkEntry * entry);
 

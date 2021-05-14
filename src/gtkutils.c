@@ -448,25 +448,6 @@ yam_editable_get_selection (GtkEditable * editable)
 }
 
 void
-yam_editable_disable_im (GtkEditable * editable)
-{
-  g_return_if_fail (editable != NULL);
-
-#if USE_XIM
-  if (editable->ic)
-    {
-      gdk_ic_destroy (editable->ic);
-      editable->ic = NULL;
-    }
-  if (editable->ic_attr)
-    {
-      gdk_ic_attr_destroy (editable->ic_attr);
-      editable->ic_attr = NULL;
-    }
-#endif
-}
-
-void
 yam_entry_strip_text (GtkEntry * entry)
 {
   gchar *text;
