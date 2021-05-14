@@ -446,8 +446,6 @@ static PrefsUIData ui_data[] = {
   {"warn_queued_on_exit", &other.checkbtn_warnqueued, prefs_set_data_from_toggle, prefs_set_toggle},
   {"startup_online_mode", &other.radiobtn_online_mode, prefs_common_online_mode_set_data_from_radiobtn, prefs_common_online_mode_set_radiobtn},
 
-  /* {"logwindow_line_limit", NULL, NULL, NULL}, */
-
   /* External commands */
   {"uri_open_command", &extcmd.uri_entry, prefs_common_uri_set_data_from_entry, prefs_common_uri_set_entry},
   {"ext_editor_command", &extcmd.exteditor_entry, prefs_set_data_from_entry, prefs_set_entry},
@@ -1510,7 +1508,7 @@ prefs_display_create (void)
   prefs_common_set_encoding_optmenu (GTK_COMBO_BOX (optmenu_outencoding), TRUE);
 
   PACK_SMALL_LABEL (vbox_tab, label_encoding_desc,
-                    _("If `Automatic' is selected, the optimal encoding " "for the current locale will be used."));
+                    _("If `Automatic' is selected, the optimal encoding for the current locale will be used."));
 
   gtk_widget_show_all (vbox1);
 
@@ -1826,7 +1824,8 @@ static const struct {
 } junk_presets[] = {
   {"bogofilter -N -s -I", "bogofilter -n -S -I", "bogofilter -I"},
   {"bsfilter -C -s -u", "bsfilter -c -S -u", "bsfilter"},
-  {"sylfilter -j", "sylfilter -c", "sylfilter"}
+  {"sylfilter -j", "sylfilter -c", "sylfilter"},
+  {"true", "true", ""}
 };
 
 enum {
@@ -1834,6 +1833,7 @@ enum {
   JUNK_BOGOFILTER,
   JUNK_BSFILTER,
   JUNK_SYLFILTER,
+  JUNK_SIMPLE,
   N_JUNK_ITEMS
 };
 
@@ -1901,6 +1901,7 @@ prefs_junk_create (void)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (optmenu_preset), "bogofilter");
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (optmenu_preset), "bsfilter");
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (optmenu_preset), "sylfilter");
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (optmenu_preset), "simple");
 
   g_signal_connect (G_OBJECT (optmenu_preset), "changed", G_CALLBACK (prefs_junk_preset_activated), NULL);
 
