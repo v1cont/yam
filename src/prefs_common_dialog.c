@@ -2994,18 +2994,18 @@ prefs_quote_colors_dialog_create (void)
 
   color_buttons.quote_level2_btn = gtk_color_button_new ();
   gtk_color_button_set_title (GTK_COLOR_BUTTON (color_buttons.quote_level2_btn), _("Pick color for quotation level 2"));
-  gtk_grid_attach (GTK_GRID (table), color_buttons.quote_level2_btn, 1, 0, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), color_buttons.quote_level2_btn, 0, 1, 1, 1);
 
   color_buttons.quote_level3_btn = gtk_color_button_new ();
   gtk_color_button_set_title (GTK_COLOR_BUTTON (color_buttons.quote_level3_btn), _("Pick color for quotation level 3"));
-  gtk_grid_attach (GTK_GRID (table), color_buttons.quote_level3_btn, 2, 0, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), color_buttons.quote_level3_btn, 0, 2, 1, 1);
 
   color_buttons.uri_btn = gtk_color_button_new ();
   gtk_color_button_set_title (GTK_COLOR_BUTTON (color_buttons.uri_btn), _("Pick color for URI"));
-  gtk_grid_attach (GTK_GRID (table), color_buttons.uri_btn, 3, 0, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), color_buttons.uri_btn, 0, 3, 1, 1);
 
   quotelevel1_label = gtk_label_new (_("Quoted Text - First Level"));
-  gtk_grid_attach (GTK_GRID (table), quotelevel1_label, 0, 1, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), quotelevel1_label, 1, 0, 1, 1);
   gtk_label_set_justify (GTK_LABEL (quotelevel1_label), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (quotelevel1_label), 0.0);
 
@@ -3015,12 +3015,12 @@ prefs_quote_colors_dialog_create (void)
   gtk_label_set_xalign (GTK_LABEL (quotelevel2_label), 0.0);
 
   quotelevel3_label = gtk_label_new (_("Quoted Text - Third Level"));
-  gtk_grid_attach (GTK_GRID (table), quotelevel3_label, 2, 1, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), quotelevel3_label, 1, 2, 1, 1);
   gtk_label_set_justify (GTK_LABEL (quotelevel3_label), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (quotelevel3_label), 0.0);
 
   uri_label = gtk_label_new (_("URI link"));
-  gtk_grid_attach (GTK_GRID (table), uri_label, 3, 1, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), uri_label, 1, 3, 1, 1);
   gtk_label_set_justify (GTK_LABEL (uri_label), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (uri_label), 0.0);
 
