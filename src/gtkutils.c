@@ -954,14 +954,17 @@ yam_button_new (const gchar *label)
 
   if (found)
     {
-      btn = gtk_button_new_with_mnemonic (yam_stock_items[i].label);
+      btn = gtk_button_new_with_mnemonic (_(yam_stock_items[i].label));
       if (!yam_stock_items[i].image)
         {
           if (yam_stock_items[i].icon)
             yam_stock_items[i].image = gtk_image_new_from_icon_name (yam_stock_items[i].icon, GTK_ICON_SIZE_MENU);
         }
       if (yam_stock_items[i].image)
-        gtk_button_set_image (GTK_BUTTON (btn), yam_stock_items[i].image);
+        {
+          gtk_button_set_always_show_image (GTK_BUTTON (btn), TRUE);
+          gtk_button_set_image (GTK_BUTTON (btn), yam_stock_items[i].image);
+        }
     }
   else
     {
