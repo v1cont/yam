@@ -1903,6 +1903,8 @@ prefs_junk_create (void)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (optmenu_preset), "sylfilter");
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (optmenu_preset), "simple");
 
+  gtk_combo_box_set_active (GTK_COMBO_BOX (optmenu_preset), 0);
+
   g_signal_connect (G_OBJECT (optmenu_preset), "changed", G_CALLBACK (prefs_junk_preset_activated), NULL);
 
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
