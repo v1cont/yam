@@ -54,7 +54,6 @@ void progress_dialog_destroy (ProgressDialog * progress);
 
 void progress_dialog_set_label (ProgressDialog * progress, gchar * str);
 void progress_dialog_set_value (ProgressDialog * progress, gfloat value);
-void progress_dialog_set_percentage (ProgressDialog * progress, gfloat percentage);
 
 void progress_dialog_append (ProgressDialog * progress,
                              GdkPixbuf * pixbuf,

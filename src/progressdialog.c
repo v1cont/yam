@@ -163,17 +163,10 @@ progress_dialog_set_label (ProgressDialog * progress, gchar * str)
   gtk_label_set_text (GTK_LABEL (progress->label), str);
 }
 
-/* FIXME: mix following two function to a single one */
 void
 progress_dialog_set_value (ProgressDialog * progress, gfloat value)
 {
   gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progress->progressbar), value);
-}
-
-void
-progress_dialog_set_percentage (ProgressDialog * progress, gfloat percentage)
-{
-  gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progress->progressbar), percentage);
 }
 
 void

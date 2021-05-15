@@ -907,7 +907,7 @@ send_send_data_progressive (Session * session, guint cur_len, guint total_len, g
 
   g_snprintf (buf, sizeof (buf), _("Sending message (%d / %d bytes)"), cur_len, total_len);
   progress_dialog_set_label (dialog->dialog, buf);
-  progress_dialog_set_percentage (dialog->dialog, (gfloat) cur_len / (gfloat) total_len);
+  progress_dialog_set_value (dialog->dialog, (gfloat) cur_len / (gfloat) total_len);
   g_snprintf (buf, sizeof (buf), _("%d / %d bytes"), cur_len, total_len);
   progress_dialog_set_row_progress (dialog->dialog, 0, buf);
   gdk_threads_leave ();

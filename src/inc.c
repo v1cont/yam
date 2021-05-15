@@ -1180,7 +1180,7 @@ inc_progress_dialog_set_progress (IncProgressDialog * inc_dialog, IncSession * i
   if (total > 0)
     {
       gfloat cval = (gfloat) cur_total / (gfloat) total;
-      progress_dialog_set_percentage (inc_dialog->dialog, cval);
+      progress_dialog_set_value (inc_dialog->dialog, cval);
       gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (inc_dialog->mainwin->progressbar), cval);
     }
 
