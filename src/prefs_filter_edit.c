@@ -416,8 +416,6 @@ prefs_filter_edit_cond_hbox_create (FilterCondEdit * cond_edit)
   GtkWidget *label;
   GtkWidget *del_btn;
   GtkWidget *add_btn;
-  GtkWidget *del_img;
-  GtkWidget *add_img;
   /* GtkWidget *match_menu_in_addr; */
   /* GtkWidget *match_menu_not_in_addr; */
   GtkListStore *model;
@@ -427,7 +425,7 @@ prefs_filter_edit_cond_hbox_create (FilterCondEdit * cond_edit)
   cond_hbox = g_new0 (CondHBox, 1);
 
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL,  4);
-  gtk_widget_show (hbox);
+  gtk_widget_show_all (hbox);
 
   model = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_INT);
 
@@ -520,19 +518,13 @@ prefs_filter_edit_cond_hbox_create (FilterCondEdit * cond_edit)
   label = gtk_label_new (_("KB"));
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 
-  del_img = gtk_image_new_from_icon_name ("list-remove", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (del_img);
-
   del_btn = gtk_button_new ();
-  gtk_container_add (GTK_CONTAINER (del_btn), del_img);
+  gtk_button_set_image (GTK_BUTTON (del_btn), gtk_image_new_from_icon_name ("list-remove", GTK_ICON_SIZE_MENU));
   gtk_widget_show (del_btn);
   gtk_box_pack_end (GTK_BOX (hbox), del_btn, FALSE, FALSE, 0);
 
-  add_img = gtk_image_new_from_icon_name ("list-add", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (add_img);
-
   add_btn = gtk_button_new ();
-  gtk_container_add (GTK_CONTAINER (add_btn), add_img);
+  gtk_button_set_image (GTK_BUTTON (add_btn), gtk_image_new_from_icon_name ("list-add", GTK_ICON_SIZE_MENU));
   gtk_widget_show (add_btn);
   gtk_box_pack_end (GTK_BOX (hbox), add_btn, FALSE, FALSE, 0);
 
@@ -558,6 +550,7 @@ prefs_filter_edit_cond_hbox_create (FilterCondEdit * cond_edit)
 
   prefs_filter_edit_set_cond_header_menu (cond_edit, cond_hbox);
   gtk_combo_box_set_active (GTK_COMBO_BOX (cond_type_optmenu), 0);
+  gtk_combo_box_set_active (GTK_COMBO_BOX (match_type_optmenu), 0);
 
   return cond_hbox;
 }
@@ -572,13 +565,10 @@ prefs_filter_edit_action_hbox_create (void)
   GtkWidget *folder_entry;
   GtkWidget *cmd_entry;
   GtkWidget *address_entry;
-  GtkWidget *folder_img;
   GtkWidget *folder_sel_btn;
   GtkWidget *clabel_optmenu;
   GtkWidget *del_btn;
   GtkWidget *add_btn;
-  GtkWidget *del_img;
-  GtkWidget *add_img;
   GtkListStore *model;
   GtkTreeIter iter;
   GtkCellRenderer *renderer;
@@ -590,7 +580,7 @@ prefs_filter_edit_action_hbox_create (void)
 
   model = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_INT, G_TYPE_BOOLEAN);
 
-  action_type_optmenu = gtk_combo_box_new ();
+  action_type_optmenu = gtk_combo_box_new_with_model (GTK_TREE_MODEL (model));
   gtk_combo_box_set_entry_text_column (GTK_COMBO_BOX (action_type_optmenu), 0);
   gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (action_type_optmenu), yam_separator_row, NULL, NULL);
   gtk_widget_show (action_type_optmenu);
@@ -600,9 +590,9 @@ prefs_filter_edit_action_hbox_create (void)
   gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (action_type_optmenu), renderer, TRUE);
   gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (action_type_optmenu), renderer, "text", 0, "sensitive", 2, NULL);
 
-#define ACTION_MENUITEM_ADD(str, action)                        \
-  {                                                             \
-    gtk_list_store_append (model, &iter);                       \
+#define ACTION_MENUITEM_ADD(str, action)                                \
+  {                                                                     \
+    gtk_list_store_append (model, &iter);                               \
     gtk_list_store_set (model, &iter, 0, str, 1, action, 2, TRUE, -1);  \
   }
 
@@ -643,11 +633,8 @@ prefs_filter_edit_action_hbox_create (void)
   gtk_widget_show (folder_entry);
   gtk_box_pack_start (GTK_BOX (hbox), folder_entry, TRUE, TRUE, 0);
 
-  folder_img = stock_pixbuf_widget (STOCK_PIXMAP_FOLDER_OPEN);
-  gtk_widget_show (folder_img);
-
   folder_sel_btn = gtk_button_new ();
-  gtk_container_add (GTK_CONTAINER (folder_sel_btn), folder_img);
+  gtk_button_set_image (GTK_BUTTON (folder_sel_btn), stock_pixbuf_widget (STOCK_PIXMAP_FOLDER_OPEN));
   gtk_widget_show (folder_sel_btn);
   gtk_box_pack_start (GTK_BOX (hbox), folder_sel_btn, FALSE, FALSE, 0);
 
@@ -665,19 +652,13 @@ prefs_filter_edit_action_hbox_create (void)
 
   colorlabel_create_color_menu (clabel_optmenu);
 
-  del_img = gtk_image_new_from_icon_name ("list-remove", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (del_img);
-
   del_btn = gtk_button_new ();
-  gtk_container_add (GTK_CONTAINER (del_btn), del_img);
+  gtk_button_set_image (GTK_BUTTON (del_btn), gtk_image_new_from_icon_name ("list-remove", GTK_ICON_SIZE_MENU));
   gtk_widget_show (del_btn);
   gtk_box_pack_end (GTK_BOX (hbox), del_btn, FALSE, FALSE, 0);
 
-  add_img = gtk_image_new_from_icon_name ("list-add", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (add_img);
-
   add_btn = gtk_button_new ();
-  gtk_container_add (GTK_CONTAINER (add_btn), add_img);
+  gtk_button_set_image (GTK_BUTTON (add_btn), gtk_image_new_from_icon_name ("list-add", GTK_ICON_SIZE_MENU));
   gtk_widget_show (add_btn);
   gtk_box_pack_end (GTK_BOX (hbox), add_btn, FALSE, FALSE, 0);
 
@@ -1584,7 +1565,7 @@ prefs_filter_edit_edit_header_list_dialog_create (void)
   add_btn = gtk_button_new_with_label (_("Add"));
   gtk_box_pack_start (GTK_BOX (btn_vbox), add_btn, FALSE, FALSE, 0);
 
-  del_btn = gtk_button_new_with_label (_(" Delete "));
+  del_btn = gtk_button_new_with_label (_("Delete"));
   gtk_box_pack_start (GTK_BOX (btn_vbox), del_btn, FALSE, FALSE, 0);
 
   yam_stock_button_set_create (&confirm_area, &ok_btn, "yam-ok", &cancel_btn, "yam-cancel", NULL, NULL);
