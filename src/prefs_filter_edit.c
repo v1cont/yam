@@ -623,6 +623,8 @@ prefs_filter_edit_action_hbox_create (void)
 
   g_object_unref (model);
 
+  gtk_combo_box_set_active (GTK_COMBO_BOX (action_type_optmenu), 0);
+
   g_signal_connect (G_OBJECT (action_type_optmenu), "changed", G_CALLBACK (prefs_filter_action_activated_cb), action_hbox);
 
   label = gtk_label_new (_("folder:"));
@@ -1096,23 +1098,6 @@ prefs_filter_edit_set_action_hbox_widgets (ActionHBox * hbox, ActionMenuType typ
       break;
     default:
       break;
-    }
-
-  model = gtk_combo_box_get_model (type_optmenu);
-  if (gtk_tree_model_get_iter_first (model, &iter))
-    {
-      do
-        {
-          gint tp;
-
-          gtk_tree_model_get (model, &iter, 1, &tp, -1);
-          if (type == tp)
-            {
-              gtk_combo_box_set_active_iter (type_optmenu, &iter);
-              break;
-            }
-        }
-      while (gtk_tree_model_iter_next (model, &iter));
     }
 
   prefs_filter_edit_set_action_hbox_menus_sensitive ();
@@ -2076,7 +2061,7 @@ prefs_filter_action_activated_cb (GtkWidget * widget, gpointer data)
   ActionHBox *hbox = (ActionHBox *) data;
   ActionMenuType type;
 
-  type = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), MENU_VAL_ID));
+  type = prefs_filter_edit_get_action_hbox_type (hbox);
   prefs_filter_edit_set_action_hbox_widgets (hbox, type);
 }
 
