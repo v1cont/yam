@@ -578,7 +578,7 @@ prefs_filter_edit_action_hbox_create (void)
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL,  4);
   gtk_widget_show (hbox);
 
-  model = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_INT, G_TYPE_BOOLEAN);
+  model = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_INT, G_TYPE_BOOLEAN);
 
   action_type_optmenu = gtk_combo_box_new_with_model (GTK_TREE_MODEL (model));
   gtk_combo_box_set_entry_text_column (GTK_COMBO_BOX (action_type_optmenu), 0);
