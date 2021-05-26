@@ -1,5 +1,5 @@
 /*
- * Sylpheed templates subsystem 
+ * Sylpheed templates subsystem
  * Copyright (C) 2001 Alexander Barinov
  * Copyright (C) 2001-2006 Hiroyuki Yamamoto
  *
@@ -97,12 +97,15 @@ template_load (gchar * filename, guint tmplid)
 void
 template_free (Template * tmpl)
 {
-  g_free (tmpl->name);
-  g_free (tmpl->to);
-  g_free (tmpl->cc);
-  g_free (tmpl->subject);
-  g_free (tmpl->value);
-  g_free (tmpl);
+  if (tmpl)
+    {
+      g_free (tmpl->name);
+      g_free (tmpl->to);
+      g_free (tmpl->cc);
+      g_free (tmpl->subject);
+      g_free (tmpl->value);
+      g_free (tmpl);
+    }
 }
 
 void
