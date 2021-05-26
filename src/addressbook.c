@@ -79,7 +79,6 @@ typedef enum {
   COL_OBJ,
   COL_PIXBUF,
   COL_PIXBUF_OPEN,
-
   N_TREE_COLS
 } AddressBookTreeColumnPos;
 
@@ -90,13 +89,11 @@ typedef enum {
   COL_REMARKS,
   COL_L_OBJ,
   COL_L_PIXBUF,
-
   N_LIST_COLS
 } AddressBookListColumnPos;
 
 enum {
   DRAG_TYPE_OBJ,
-
   N_DRAG_TYPES
 };
 
@@ -162,8 +159,7 @@ static void addressbook_person_collapse_node (GtkTreeView * treeview,
 
 static void addressbook_drag_begin (GtkWidget * widget, GdkDragContext * drag_context, gpointer data);
 static void addressbook_drag_end (GtkWidget * widget, GdkDragContext * drag_context, gpointer data);
-static void addressbook_drag_data_get (GtkWidget * widget,
-                                       GdkDragContext * drag_context,
+static void addressbook_drag_data_get (GtkWidget * widget, GdkDragContext * drag_context,
                                        GtkSelectionData * selection_data, guint info, guint time, gpointer data);
 
 #if 0
@@ -179,10 +175,8 @@ static gboolean addressbook_tree_button_released (GtkWidget * ctree, GdkEventBut
 static gboolean addressbook_drag_motion (GtkWidget * widget,
                                          GdkDragContext * context, gint x, gint y, guint time, gpointer data);
 static void addressbook_drag_leave (GtkWidget * widget, GdkDragContext * context, guint time, gpointer data);
-static void addressbook_drag_received (GtkWidget * widget,
-                                       GdkDragContext * context,
-                                       gint x,
-                                       gint y, GtkSelectionData * data, guint info, guint time, gpointer user_data);
+static void addressbook_drag_received (GtkWidget * widget, GdkDragContext * context, gint x, gint y,
+                                       GtkSelectionData * data, guint info, guint time, gpointer user_data);
 
 static void addressbook_folder_resized (GtkWidget * widget, GtkAllocation * allocation, gpointer data);
 static void addressbook_col_resized (GtkWidget * widget, GParamSpec *spec, gpointer data);
@@ -546,7 +540,7 @@ addressbook_create (void)
   gtk_tree_view_column_pack_start (column, renderer, FALSE);
   gtk_tree_view_column_set_title (column, _("Folder"));
   gtk_tree_view_column_set_attributes (column, renderer, "pixbuf", COL_PIXBUF,
-                                       "pixbuf-expander-open", COL_PIXBUF_OPEN, 
+                                       "pixbuf-expander-open", COL_PIXBUF_OPEN,
                                        "pixbuf-expander-closed", COL_PIXBUF, NULL);
 
   renderer = gtk_cell_renderer_text_new ();
@@ -1797,7 +1791,7 @@ addressbook_folder_resized (GtkWidget * widget, GtkAllocation * allocation, gpoi
 static void
 addressbook_col_resized (GtkWidget * widget, GParamSpec *spec, gpointer data)
 {
-  AddressBookListColumnPos type = (gint) data;
+  AddressBookListColumnPos type = GPOINTER_TO_INT (data);
   gint width = gtk_tree_view_column_get_width (GTK_TREE_VIEW_COLUMN (widget));
 
   if (width < 8)

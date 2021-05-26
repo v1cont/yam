@@ -191,15 +191,15 @@ addressbook_edit_book_create (gboolean * cancelled)
   gtk_grid_attach (GTK_GRID (table), label, 0, 0, 1, 1);
 
   name_entry = gtk_entry_new ();
-  gtk_grid_attach (GTK_GRID (table), name_entry, 0, 1, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), name_entry, 1, 0, 1, 1);
 
   check_btn = gtk_button_new_with_label (_(" Check File "));
-  gtk_grid_attach (GTK_GRID (table), check_btn, 0, 2, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), check_btn, 2, 0, 1, 1);
 
   /* Second row */
   label = gtk_label_new (_("File"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-  gtk_grid_attach (GTK_GRID (table), label, 1, 0, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), label, 0, 1, 1, 1);
 
   file_label = gtk_label_new (NULL);
   gtk_label_set_xalign (GTK_LABEL (file_label), 0.0);

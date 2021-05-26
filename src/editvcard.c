@@ -185,14 +185,14 @@ addressbook_edit_vcard_create (gboolean * cancelled)
 
   name_entry = gtk_entry_new ();
   gtk_widget_set_hexpand (name_entry, TRUE);
-  gtk_grid_attach (GTK_GRID (table), name_entry, 0, 1, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), name_entry, 1, 0, 1, 1);
 
   check_btn = gtk_button_new_with_label (_(" Check File "));
-  gtk_grid_attach (GTK_GRID (table), check_btn, 0, 2, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), check_btn, 2, 0, 1, 1);
 
   /* Second row */
   label = gtk_label_new (_("File"));
-  gtk_grid_attach (GTK_GRID (table), label, 1, 0, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), label, 0, 1, 1, 1);
   gtk_label_set_xalign (GTK_LABEL (label), 0.0);
 
   file_entry = gtk_entry_new ();
@@ -200,7 +200,7 @@ addressbook_edit_vcard_create (gboolean * cancelled)
   gtk_grid_attach (GTK_GRID (table), file_entry, 1, 1, 1, 1);
 
   file_btn = gtk_button_new_with_label ("...");
-  gtk_grid_attach (GTK_GRID (table), file_btn, 1, 2, 1, 1);
+  gtk_grid_attach (GTK_GRID (table), file_btn, 2, 1, 1, 1);
 
   /* Status line */
   statusbar = gtk_statusbar_new ();
