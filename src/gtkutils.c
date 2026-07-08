@@ -963,7 +963,7 @@ yam_button_new (const gchar *label)
       if (yam_stock_items[i].image)
         {
           gtk_button_set_always_show_image (GTK_BUTTON (btn), TRUE);
-          gtk_button_set_image (GTK_BUTTON (btn), yam_stock_items[i].image);
+          gtk_button_set_image (GTK_BUTTON (btn), g_object_ref (yam_stock_items[i].image));
         }
     }
   else
