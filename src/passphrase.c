@@ -24,6 +24,7 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
+#include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
