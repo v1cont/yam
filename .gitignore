@@ -39,3 +39,4 @@ data/*.desktop
 *.tar.*
 *.log
 *.old
+build.sh
