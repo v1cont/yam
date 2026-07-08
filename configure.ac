@@ -81,6 +81,10 @@ dnl Checks for liblockfile
 AC_CHECK_HEADERS(lockfile.h)
 AC_CHECK_LIB(lockfile, lockfile_create)
 
+dnl Checks for libiconv
+AC_CHECK_HEADERS(iconv.h)
+AC_CHECK_LIB(iconv, iconv_open)
+
 dnl Checks for header files.
 AC_HEADER_DIRENT
 
